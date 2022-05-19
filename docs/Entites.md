@@ -15,8 +15,9 @@ sidebar_position: 2
 - dailyCollectionSnapshot
 - weeklyCollectionSnapshot
 
-## account
-### Description: The Wallet Address / User / Owner of an NFT
+### account
+The wallet address / user / owner of an NFT.
+
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | id | ID! | The wallet address for a user|
@@ -25,8 +26,9 @@ sidebar_position: 2
 | transfersFrom | [transfer!]! | The transfers that were to an account. |
 | accountCollection | [accountCollection!]! | The collections for the NFT that an account owns with the total count of NFT’s for a specific collection. |
 
-## token 
-### Description: ERC721 Token / The NFT
+### token 
+ERC721 Token / The NFT
+
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | id | ID! | Ethereum / Collection Addrress - Token Id (formatted to play nice with OpenSea) |
@@ -36,7 +38,7 @@ sidebar_position: 2
 | transfers | [transfer!]! | Transfers involving this token |
 
 
-## collection
+### collection
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | id | ID! | The address of the collection |
@@ -55,8 +57,7 @@ sidebar_position: 2
 | accountCollection | [accountCollection!]! | M:M relationship for Accounts and Collections |
 
 
-## accountCollection
-Important Note: If an address sells it's last NFT in the collection, the record will be removed from this entity.
+### accountCollection
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | id | ID! | Account Id - Collection Id |
@@ -64,8 +65,9 @@ Important Note: If an address sells it's last NFT in the collection, the record 
 | collection | collection! | Address of the NFT Collection |
 | tokenCount | Int! | Count of NFT's owned in a collection by the Address |
 
+> Important Note: If an address sells it's last NFT in the collection, the record will be removed from this entity.
 
-## transaction
+### transaction
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | id | ID! | the hash of the tx |
@@ -75,10 +77,10 @@ Important Note: If an address sells it's last NFT in the collection, the record 
 | transfers | [transfer!]!  | Transfers that occured within the transaction |
 | sales | [sale!] | Sale events that occured within the transaction |
 | unmatchedTransferCount | Int!  | Count of how many transfers were not matched to a sale. Used internally for transfer & sale matching |
-| gasPrice | BigInt | *currently unstable* |
+| gasPrice | BigInt | *Currently unstable* |
  
 
-## transfer
+### transfer
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | id | ID! | Block Number and Event Id in which the transfers event occured |
@@ -90,10 +92,10 @@ Important Note: If an address sells it's last NFT in the collection, the record 
 | timestamp | Int! | Timestamp for block |
 | blockNumber | Int! | Block Number |
 | amount | BigDecimal! | The amount of ETH paid |
-| matchedSale | sale | matched sale event for the transfer |
+| matchedSale | sale | Matched sale event for the transfer |
 
 
-## sale
+### sale
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | id | ID! | Block Number and Event Id in which the sale event occured |
@@ -105,7 +107,7 @@ Important Note: If an address sells it's last NFT in the collection, the record 
 | platform | String | The name of the marketplace where the sale occurred |
 
 
-## currency
+### currency
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | id | ID! | The currency address. If unknown ERC20 due to lack of event info: '0xbadfeed000000000000000000000000000000000' |
@@ -114,7 +116,7 @@ Important Note: If an address sells it's last NFT in the collection, the record 
 | symbol | String! | The currency symbol (eg ETH, WETH) |
 
 
-## hourlyCollectionSnapshot
+### hourlyCollectionSnapshot
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | id | ID! | The collection address - The hour |
@@ -126,7 +128,7 @@ Important Note: If an address sells it's last NFT in the collection, the record 
 | topSale | BigDecimal! | Hourly top sales |
 | bottomSale | BigDecimal! | Hourly bottom sales |
 
-## dailyCollectionSnapshot
+### dailyCollectionSnapshot
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | id | ID! | The collection address - The day |
@@ -138,7 +140,7 @@ Important Note: If an address sells it's last NFT in the collection, the record 
 | topSale | BigDecimal! | Daily top sales |
 | bottomSale | BigDecimal! | Daily bottom sales |
 
-## weeklyCollectionSnapshot
+### weeklyCollectionSnapshot
 | Field | Type | Description |
 | ----------- | ----------- | ----------- |
 | id | ID! | The collection address - The week |
@@ -149,5 +151,3 @@ Important Note: If an address sells it's last NFT in the collection, the record 
 | weeklyAvgSale | BigDecimal! | Average sale amount for the week |
 | topSale | BigDecimal! | Weekly top sales |
 | bottomSale | BigDecimal! | Weekly bottom sales |
-
-
